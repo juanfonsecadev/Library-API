@@ -11,10 +11,10 @@ namespace Library.Data
         
         }
 
-        public DbSet<Book> Book { get; set; }
-        public DbSet<Author> Author { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Loan> Loan { get; set; }
+       public DbSet<Book> Books { get; set; }
+public DbSet<Author> Authors { get; set; }
+public DbSet<User> Users { get; set; }
+public DbSet<Loan> Loans { get; set; }
 
     }
 }

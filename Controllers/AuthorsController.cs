@@ -17,7 +17,7 @@ namespace Library.Controllers
             [FromServices] DataContext context
         )
         {
-            var authors = await context.Author.ToListAsync();
+            var authors = await context.Authors.ToListAsync();
             return Ok(authors);
         }
 
@@ -28,7 +28,7 @@ namespace Library.Controllers
             [FromServices] DataContext context
             )
         {
-            var author = await context.Author.FindAsync(id);
+            var author = await context.Authors.FindAsync(id);
 
             if (author == null)
                 return NotFound("Autor não encontrado.");
@@ -45,12 +45,12 @@ namespace Library.Controllers
         {
             try
             {
-                var author = await context.Author.FindAsync(id);
+                var author = await context.Authors.FindAsync(id);
 
                 if (author == null)
                     return NotFound("Autor não encontrado");
 
-                context.Author.Remove(author);
+                context.Authors.Remove(author);
                 await context.SaveChangesAsync();
 
                 return Ok(new { message = "Autor removido com sucesso" });
@@ -74,7 +74,7 @@ namespace Library.Controllers
             if (id != author.Id)
                 return NotFound("Autor não encontrado");
 
-            var existingAuthor = await context.Author.FindAsync(id);
+            var existingAuthor = await context.Authors.FindAsync(id);
 
             if (existingAuthor == null)
                 return NotFound("Autor não encontrado");
@@ -99,7 +99,7 @@ namespace Library.Controllers
 
             try
             {
-                context.Author.Add(author);
+                context.Authors.Add(author);
                 await context.SaveChangesAsync();
 
                 return Ok(author);

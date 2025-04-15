@@ -105,3 +105,13 @@ D:\Codigos\Library\Library\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces
 D:\Codigos\Library\Library\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Codigos\Library\Library\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Codigos\Library\Library\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Codigos\Library\Library\obj\Debug\net8.0\Library.API.sourcelink.json
+D:\Codigos\Library\Library\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\Codigos\Library\Library\bin\Debug\net8.0\DotNetEnv.dll
+D:\Codigos\Library\Library\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+D:\Codigos\Library\Library\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Codigos\Library\Library\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Codigos\Library\Library\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Codigos\Library\Library\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Codigos\Library\Library\bin\Debug\net8.0\Sprache.dll
+D:\Codigos\Library\Library\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

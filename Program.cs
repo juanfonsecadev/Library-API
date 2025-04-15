@@ -1,6 +1,7 @@
 using Library.Data;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
+using Library.API.Services;
 
 Env.Load();  // Carrega as variáveis de ambiente do .env
 
@@ -25,6 +26,8 @@ builder.Services.AddSwaggerGen();
 // Configura o DbContext para usar o MySQL com a string de conexão carregada da variável de ambiente
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 36))));
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 
 var app = builder.Build();
 

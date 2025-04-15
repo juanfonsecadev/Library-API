@@ -15,7 +15,14 @@ namespace Library.API.Models
         [EmailAddress(ErrorMessage = "O e-mail não é válido.")]
         [StringLength(100, ErrorMessage = "O e-mail deve ter até 100 caracteres.")]
         public string Email { get; set; }
-        public List<Loan> Loans { get; set; }
 
+        [Required]
+        [StringLength(255)]
+        public string PasswordHash { get; set; }
+
+        [Required]
+        public string Role { get; set; } = "user";
+
+        public List<Loan> Loans { get; set; }
     }
 }

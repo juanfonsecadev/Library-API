@@ -18,7 +18,7 @@ namespace Library.Controllers
         [FromServices] DataContext context
         )
         {
-            var books = await context.Book.ToListAsync();
+            var books = await context.Books.ToListAsync();
             return Ok(books);
         }
 
@@ -29,7 +29,7 @@ namespace Library.Controllers
             [FromServices] DataContext context
             )
         {
-            var book = await context.Book.FindAsync(id);
+            var book = await context.Books.FindAsync(id);
 
             if (book == null)
                 return NotFound("Livro não encontrado");
@@ -48,7 +48,7 @@ namespace Library.Controllers
             if (id != book.Id)
                 return NotFound("Livro não encontrado");
 
-            var existingBook = await context.Book.FindAsync(id);
+            var existingBook = await context.Books.FindAsync(id);
 
             if (existingBook == null)
                 return NotFound("Livro não encontrado.");
@@ -79,7 +79,7 @@ namespace Library.Controllers
                 book.CreatedAt = DateTime.Now;
                 book.UpdatedAt = DateTime.Now;
 
-                context.Book.Add(book);
+                context.Books.Add(book);
                 await context.SaveChangesAsync();
 
                 return Ok(book);
@@ -100,12 +100,12 @@ namespace Library.Controllers
         {
             try
             {
-                var book = await context.Book.FindAsync(id);
+                var book = await context.Books.FindAsync(id);
 
                 if (book == null)
                     return NotFound("Livro não encontrado");
 
-                context.Book.Remove(book);
+                context.Books.Remove(book);
                 await context.SaveChangesAsync();
 
                 return Ok(new { message = "Livro removido com sucesso! " });
