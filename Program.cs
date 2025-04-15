@@ -1,16 +1,30 @@
 using Library.Data;
 using Microsoft.EntityFrameworkCore;
+using DotNetEnv;
+
+Env.Load();  // Carrega as variáveis de ambiente do .env
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Obtém a string de conexão diretamente do arquivo .env
+var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
+// Verifica se a string de conexão foi carregada corretamente
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new InvalidOperationException("A string de conexão 'CONNECTION_STRING' não foi encontrada.");
+}
+
+// Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Configuração Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DataContext>(options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 36))));
-builder.Services.AddScoped<DataContext, DataContext>();
+
+// Configura o DbContext para usar o MySQL com a string de conexão carregada da variável de ambiente
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 36))));
 
 var app = builder.Build();
 
@@ -22,11 +36,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.UseRouting();
-
 app.Run();

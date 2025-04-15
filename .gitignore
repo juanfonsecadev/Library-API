@@ -1,0 +1,19 @@
+# Ignorar o arquivo .env
+.env
+
+# Ignorar arquivos de build do .NET
+bin/
+obj/
+
+# Ignorar arquivos de configurações do Visual Studio (caso esteja usando)
+.vs/
+.vscode/
+
+# Ignorar arquivos do Rider (se usar)
+.idea/
+
+# Ignorar o arquivo de log do .NET (geralmente usado em produção)
+appsettings.Development.json
+
+# Ignorar pacotes NuGet
+*.nupkg
