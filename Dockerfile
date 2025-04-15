@@ -5,17 +5,17 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Library-API/Library-API.csproj", "Library-API/"]
-RUN dotnet restore "Library-API/Library-API.csproj"
+COPY ["library/library.api/Library.Api.csproj", "library/library.api/"]
+RUN dotnet restore "library/library.api/Library.Api.csproj"
 COPY . .
-WORKDIR "/src/Library-API"
-RUN dotnet build "Library-API.csproj" -c Release -o /app/build
+WORKDIR "/src/library/library.api"
+RUN dotnet build "Library.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Library-API.csproj" -c Release -o /app/publish
+RUN dotnet publish "Library.Api.csproj" -c Release -o /app/publish
 
 # Etapa de produção
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Library-API.dll"]
+ENTRYPOINT ["dotnet", "Library.Api.dll"]
